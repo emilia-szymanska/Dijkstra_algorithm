@@ -1,14 +1,41 @@
- /*
-struct node
+template <typename T>
+typename List<T>::iterator & List<T>::iterator::operator ++()
 {
-	node * forward_pointer;
-	node * backward_pointer;
-	T content;
-};
-	node * head;
-	node * tail;
+	this->node_element = this->node_element->forward_pointer;
+	return *this;
+}
 
-	*/
+
+template <typename T>
+typename List<T>::iterator List<T>::iterator::operator ++(int)
+{
+	List<T>::iterator tmp = *this;
+	this->node_element = this->node_element->forward_pointer;
+	return tmp;
+}
+
+template <typename T>
+T & List<T>::iterator::operator *() const
+{
+	return this->node_element->content;
+}
+
+template <typename T>
+typename List<T>::iterator & List<T>::iterator::operator =(const List<T>::iterator & Iter)
+{
+	this->node_element = Iter->node_element;
+	return *this;
+}
+
+template <typename T>
+bool List<T>::iterator::operator !=(const List<T>::iterator & Iter) const
+{
+	return this->node_element != Iter.node_element;
+}
+
+
+
+	
 template <typename T>
 List<T>::List()
 {
@@ -169,4 +196,38 @@ const T & List<T>::operator [] (unsigned int index) const
 
 
 	return tmp_ptr->content;
+}
+
+
+template <typename T>
+typename List<T>::node * List<T>::return_node(unsigned int index)
+{
+	node * tmp_ptr = this->head;
+	
+	for(unsigned int i = 0; i < index; i++)
+		tmp_ptr = tmp_ptr->forward_pointer;
+	
+	return tmp_ptr;
+}	
+
+
+template <typename T>
+void List<T>::delete_node(node * to_delete)
+{
+	if(this->head == to_delete)
+	{
+		this->pop_front();
+		return;
+	}
+	if(this->tail == to_delete) 
+	{
+		this->pop_back();
+	       	return;
+	}
+	
+	to_delete->forward_pointer->backward_pointer = to_delete->backward_pointer;
+	to_delete->backward_pointer->forward_pointer = to_delete->forward_pointer;		
+	delete to_delete;
+	this->number_of_elements--;
+	return;
 }

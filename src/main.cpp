@@ -11,10 +11,10 @@ int main()
 	cin>>c;
 	moja.push_front(c);
 	cin>>d;
-	moja.push_back(d);
+	moja.push_front(d);
 	cin>>e;
-	moja.push_back(e);
-	cout<<moja[0]<<" "<<moja[1]<<" "<<moja[2]<<" "<<moja[3]<<" "<<moja[4]<<endl;
-
+	moja.push_front(e);
+	for(auto it = moja.begin(); it != moja.end(); it++) cout<<*it<<" ";
+	cout<<endl;
 	return 0;
 }
