@@ -1,20 +1,24 @@
 #include "../inc/list.hh"
+//#include "../inc/GraphList.hh"
+#include "../inc/GraphMatrix.hh"
 
 int main()
 {
-	char a, b, c, d, e;
-	List<char> moja =  List<char>();
-	cin>>a;
-	moja.push_front(a);
-	cin>>b;
-	moja.push_front(b);
-	cin>>c;
-	moja.push_front(c);
-	cin>>d;
-	moja.push_front(d);
-	cin>>e;
-	moja.push_front(e);
-	for(auto it = moja.begin(); it != moja.end(); it++) cout<<*it<<" ";
-	cout<<endl;
+	GraphMatrix grafik = GraphMatrix(5);
+	grafik.insertEdge(0, 1, 3);
+	grafik.insertEdge(0, 4, 1);
+	grafik.insertEdge(1, 4, 1);
+	grafik.insertEdge(1, 3, 2);
+	grafik.insertEdge(2, 2, 1);
+	grafik.insertEdge(4, 3, 2);
+	cout<<grafik.Size()<<endl;
+	cout<<grafik.areAdjacent(0, 1)<<" "<<grafik.areAdjacent(1, 2)<<" "<<grafik.areAdjacent(3, 4)<<" "<<grafik.areAdjacent(4, 3)<<" "<<endl;
+
+	/*List<Pair<int> > meh = grafik.incidentEdges(0);
+	for(int i = 0; i < meh.size(); i++) 
+	{
+		cout<<meh.front().first<<" "<<meh.front().second<<" ";
+		meh.pop_front();
+	}*/
 	return 0;
 }
