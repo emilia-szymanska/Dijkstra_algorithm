@@ -1,3 +1,4 @@
+#include "../inc/GraphList.hh"
 bool GraphList::areAdjacent(int v, int w)
 {
 	for(auto it = this->V[v].begin(); it != this->V[v].end(); it++) 

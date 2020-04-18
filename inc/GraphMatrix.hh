@@ -2,15 +2,18 @@
 #define GRAPMATRIX_HH
 
 #include "list.hh"
+#include "Pair.hh"
 
-template <typename T>
+/*template <typename T>
 struct Pair
 {
 	T first;
 	T second;
 	Pair(T element1 = T(0), T element2 = T(0)) {first = element1; second = element2;};
-};
 
+};
+#include "../src/GraphMatrix.cpp"
+*/
 
 class GraphMatrix
 {
@@ -28,6 +31,5 @@ class GraphMatrix
 			
 };
 
-#include "../src/GraphMatrix.cpp"
 
 #endif

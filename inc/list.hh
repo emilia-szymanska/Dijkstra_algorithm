@@ -40,7 +40,7 @@ class List
 
 		List(); 
 		~List();
-		List(const List & copy_list);
+		List(List & copy_list);
 		void push_front(T value);
 		void push_back(T value);
 		void pop_front();

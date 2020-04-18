@@ -49,6 +49,18 @@ List<T>::~List()
 {
 	while(!this->empty()) this->pop_front();
 }
+		
+template <typename T>
+List<T>::List(List & copy_list)
+{
+	this->head = nullptr;
+	this->tail = nullptr;
+	this->number_of_elements = 0;
+	for(auto it = copy_list.begin(); it != copy_list.end(); it++)
+		this->push_back(*it);
+
+
+}
 	
 template <typename T>
 void List<T>::push_front(T value)

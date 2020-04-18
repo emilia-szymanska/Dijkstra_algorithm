@@ -1,3 +1,5 @@
+#include "../inc/GraphMatrix.hh"
+
 GraphMatrix::GraphMatrix(unsigned int number_vertex) 
 {
 	this->size = number_vertex; 

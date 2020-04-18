@@ -2,7 +2,8 @@
 #define GRAPHLIST_HH
 
 #include "list.hh"
-
+#include "Pair.hh"
+/*
 template <typename T>
 struct Pair
 {
@@ -10,7 +11,7 @@ struct Pair
 	T second;
 	Pair(T element1 = T(0), T element2 = T(0)) {first = element1; second = element2;};
 };
-
+*/
 
 class GraphList
 {
@@ -31,6 +32,6 @@ class GraphList
 			
 };
 
-#include "../src/GraphList.cpp"
+//#include "../src/GraphList.cpp"
 
 #endif
