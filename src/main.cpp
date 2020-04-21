@@ -3,13 +3,14 @@
 //#include "../inc/GraphMatrix.hh"
 #include "GraphList.cpp"
 #include "GraphMatrix.cpp"
+#include "../inc/Dijkstra.hh"
 
 int main()
 {
-	Pair<int> para1 = Pair<int>(3, 4);
+	/*Pair<int> para1 = Pair<int>(3, 4);
 	Pair<int> para2 = Pair<int>(3, 3);
 	cout<<(para1>para2)<<endl;
-	/*GraphList grafik = GraphList(5);
+	GraphList grafik = GraphList(5);
 	grafik.insertEdge(0, 1, 3);
 	grafik.insertEdge(0, 4, 1);
 	grafik.insertEdge(1, 4, 1);
@@ -25,6 +26,23 @@ int main()
 	//	cout<<meh.front().first<<" "<<meh.front().second<<endl;
 		meh.pop_front();
 	
-	}*/
+	}
+
+	Heap<int> kopczyk = Heap<int>(5);
+	int a, b, c, d, e;
+	cin>>a>>b>>c>>d>>e;
+	kopczyk.addToHeap(a);
+	kopczyk.addToHeap(b);
+	kopczyk.addToHeap(c);
+	kopczyk.addToHeap(d);
+	kopczyk.addToHeap(e);
+
+	while(!kopczyk.isEmpty())
+	{
+		cout<<kopczyk.seeRoot();
+		kopczyk.takeFromHeap();
+	}*/	
+
+
 	return 0;
 }

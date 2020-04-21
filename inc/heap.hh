@@ -42,7 +42,7 @@ struct Heap
 
 };	
 
-#include "heap.cpp"
+#include "../src/heap.cpp"
 
 #endif
 
