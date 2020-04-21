@@ -43,6 +43,32 @@ int main()
 		kopczyk.takeFromHeap();
 	}*/	
 
+	int n, m, s, a, b, d;
+	
+	cin>>n>>m>>s;
+	GraphList grafik = GraphList(n);
+	
+	for(int i = 0; i < m; i++)
+	{
+		cin>>a>>b>>d;
+		grafik.insertEdge(a-1, b-1, d);
+	}
+
+
+
+	/*grafik.insertEdge(0, 1, 3);
+	grafik.insertEdge(0, 4, 1);
+	grafik.insertEdge(1, 4, 1);
+	grafik.insertEdge(1, 3, 2);
+	grafik.insertEdge(2, 2, 1);
+	grafik.insertEdge(4, 3, 2);
+	*/
+
+	Dijkstra_results wynik = dijkstra_algorithm(grafik, s-1);	
+	for(unsigned int i = 0; i < n; i++)
+	{
+		cout<<wynik.distance[i]<<" ";
+	}
 
 	return 0;
 }

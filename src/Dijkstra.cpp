@@ -3,9 +3,9 @@ Dijkstra_results dijkstra_algorithm(T graph, int vertex)
 {
 	int v, dist, neighbour_index, neighbour_edge;
 	unsigned int number_of_elements = graph.Size();
-	int * prev = new int [number_of_elements];
-	int * d = new int [number_of_elements];
-	for(int i = 0; i < number_of_elements; i++)
+	int * prev = new int [number_of_elements];			//table - previous vertex 
+	int * d = new int [number_of_elements];				//table - best distance
+	for(unsigned int i = 0; i < number_of_elements; i++)		// making ,,infinity'' values
 	{	
 		d[i] = -1;
 		prev[i] = -1;
@@ -13,17 +13,17 @@ Dijkstra_results dijkstra_algorithm(T graph, int vertex)
 
 	d[vertex] = 0;
 
-	Heap<Pair<int> > Q = Heap<Pair<int> >();	
+	Heap<Pair<int> > Q = Heap<Pair<int> >(0);	
 	Q.addToHeap(Pair<int>(0, vertex));
 	
-	while(!Q.isEmpty())
+	while(!Q.isEmpty())						//Dijkstra's magic
 	{
 		dist = -Q.seeRoot().first;
 		v = Q.seeRoot().second;
 		Q.takeFromHeap();
 		
 		if(dist > d[v]) continue;
-		List<Pair<int> > neighbours = graph.incidentEdges();
+		List<Pair<int> > neighbours = graph.incidentEdges(v);
 		for (auto It = neighbours.begin(); It != neighbours.end(); It++)
 		{
 			
@@ -38,14 +38,15 @@ Dijkstra_results dijkstra_algorithm(T graph, int vertex)
 		}	
 	}
 
-	Dijkstra_results result = Dijkstra_results(number_of_elements);
-	for(int i = 0; i < number_of_elements; i++)
+	Dijkstra_results result = Dijkstra_results(number_of_elements);			//putting results into special struct
+	for(unsigned int i = 0; i < number_of_elements; i++)
 	{
 		result.distance[i] = d[i];
 		result.previous[i] = prev[i];
 	}
 	
 	delete [] d;
+	delete [] prev; 
 
 	return result;
 }
