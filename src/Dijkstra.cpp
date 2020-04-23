@@ -11,7 +11,7 @@ Dijkstra_results dijkstra_algorithm(T & graph, int vertex)
 	}
 
 	result.distance[vertex] = 0;
-	Heap<Pair<int> > Q = Heap<Pair<int> >(0);	
+	Heap<Pair<int> > Q = Heap<Pair<int> >();	
 	Q.addToHeap(Pair<int>(0, vertex));
 	while(!Q.isEmpty())						//Dijkstra's magic
 	{

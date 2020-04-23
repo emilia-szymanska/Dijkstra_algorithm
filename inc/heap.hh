@@ -15,10 +15,10 @@ struct Heap
 	unsigned int last_index;
 	unsigned int max_size;
 
-	Heap(unsigned int length)
+	Heap()
 	{
-		table = new T [length + 1];
-	        max_size = length;
+		table = new T [32 + 1];
+	        max_size = 32;
 		last_index = 0;	
 	}
 

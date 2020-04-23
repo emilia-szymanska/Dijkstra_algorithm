@@ -13,7 +13,7 @@ void Heap<T>::addToHeap (const T & object)
 	if(last_index == max_size) 
 	{
 		T * new_table = new T [2 * max_size + 1];
-		max_size = 2 * max_size + 1;
+		max_size = 2 * max_size;
 		for(unsigned int i = 0; i <= last_index; i++)
 			new_table[i] = table[i]; 
 		delete [] table;

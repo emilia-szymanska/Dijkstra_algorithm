@@ -1,6 +1,5 @@
+#include "../inc/stack.hh"
 #include "../inc/list.hh"
-//#include "../inc/GraphList.hh"
-//#include "../inc/GraphMatrix.hh"
 #include "GraphList.cpp"
 #include "GraphMatrix.cpp"
 #include "../inc/Dijkstra.hh"
@@ -9,47 +8,43 @@
 
 int main()
 {
-	double timing;
-	
-	int edge, vertex, start, v1, v2, value;
+	int vertex, edge, start, v1, v2, value;
 	
 	cin>>edge>>vertex>>start;
+	
 	//GraphList grafik = GraphList(vertex);
 	GraphMatrix grafik = GraphMatrix(vertex);
-	
+
 	for(int i = 0; i < edge; i++)
 	{
 		cin>>v1>>v2>>value;
 		grafik.insertEdge(v1, v2, value);
 	}
 	
-	clock_t begin = clock();
-
 	Dijkstra_results wynik = dijkstra_algorithm(grafik, start);	
 	
-	clock_t end = clock();
-	
-	timing = (end - begin)/((double)CLOCKS_PER_SEC/1000);
-
-	cout << fixed << setprecision(5) << timing << endl;	
-/*
-
-	Heap<int> kopczyk = Heap<int>(0);
-	for (int i = 0; i < 10; i++)
-		kopczyk.addToHeap(i);
-	
-	for (int i = 0; i <= 10; i++)
+	int how_many;
+	Stack<int> stosik = Stack<int>(vertex);
+	for(int i = 0; i < vertex; i++)
 	{
-		cout<<kopczyk.seeRoot()<<" ";
-		kopczyk.takeFromHeap();
+		cout << "Wierzcholek " << i << endl;
+		cout << "   koszt " << wynik.distance[i] << endl;
+		how_many = 0;
+		for(int j = i; j != -1; j = wynik.previous[j])
+		{
+			stosik.push(j);
+			how_many++;
+		}	
+		
+		cout << "   sciezka ";
+
+		while(how_many--)
+		{
+			cout << stosik.top() << " ";
+			stosik.pop();
+		}
+		cout << endl;	
+
 	}
-	cout<<endl;*/
-
-
-	/*for(int i = 0; i < 5; i++)
-	{
-		cout<<wynik.distance[i]<<" "<<wynik.previous[i]<<endl;
-	}*/
-
 	return 0;
 }
