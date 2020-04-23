@@ -13,11 +13,13 @@ struct Heap
 {
 	T * table;
 	unsigned int last_index;
-	
+	unsigned int max_size;
+
 	Heap(unsigned int length)
 	{
 		table = new T [length + 1];
-	        last_index = 0;	
+	        max_size = length;
+		last_index = 0;	
 	}
 
 	~Heap()

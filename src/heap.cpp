@@ -10,6 +10,16 @@ void swapping (T & a, T & b)
 template <typename T>
 void Heap<T>::addToHeap (const T & object)
 {
+	if(last_index == max_size) 
+	{
+		T * new_table = new T [2 * max_size + 1];
+		max_size = 2 * max_size + 1;
+		for(unsigned int i = 0; i <= last_index; i++)
+			new_table[i] = table[i]; 
+		delete [] table;
+		table = new_table;
+	}
+
 	unsigned int current_index;
 	if(last_index == 0) table[1] = object;
 	else

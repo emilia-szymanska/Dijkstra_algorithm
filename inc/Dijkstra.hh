@@ -24,7 +24,7 @@ struct Dijkstra_results
 };
 
 template <class T>
-Dijkstra_results dijkstra_algorithm(T graph, int vertex);
+Dijkstra_results dijkstra_algorithm(T & graph, int vertex);
 
 #include "../src/Dijkstra.cpp"
 

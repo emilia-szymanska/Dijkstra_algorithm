@@ -32,6 +32,19 @@ int main()
 	timing = (end - begin)/((double)CLOCKS_PER_SEC/1000);
 
 	cout << fixed << setprecision(5) << timing << endl;	
+/*
+
+	Heap<int> kopczyk = Heap<int>(0);
+	for (int i = 0; i < 10; i++)
+		kopczyk.addToHeap(i);
+	
+	for (int i = 0; i <= 10; i++)
+	{
+		cout<<kopczyk.seeRoot()<<" ";
+		kopczyk.takeFromHeap();
+	}
+	cout<<endl;*/
+
 
 	/*for(int i = 0; i < 5; i++)
 	{
