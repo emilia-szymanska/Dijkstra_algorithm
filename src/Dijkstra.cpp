@@ -12,16 +12,14 @@ Dijkstra_results dijkstra_algorithm(T graph, int vertex)
 	}
 
 	d[vertex] = 0;
-
 	Heap<Pair<int> > Q = Heap<Pair<int> >(0);	
 	Q.addToHeap(Pair<int>(0, vertex));
-	
 	while(!Q.isEmpty())						//Dijkstra's magic
 	{
 		dist = -Q.seeRoot().first;
 		v = Q.seeRoot().second;
+		cout<<"cos"<<endl;				//!!!!
 		Q.takeFromHeap();
-		
 		if(dist > d[v]) continue;
 		List<Pair<int> > neighbours = graph.incidentEdges(v);
 		for (auto It = neighbours.begin(); It != neighbours.end(); It++)

@@ -36,11 +36,24 @@ class List
 				bool operator !=  (const iterator & Iter) const;	
 
 		};
-
+		
+		class const_iterator
+		{
+			node * node_element;
+			
+			public:
+				const_iterator( node* newnode = nullptr) {this->node_element = newnode;}
+				const node & get_node() const { return *node_element; }
+				const_iterator & operator ++ ();
+				const_iterator operator ++ (int);
+				const T& operator * () const;
+				const_iterator&	operator = (const const_iterator & Iter);
+				bool operator!=(const const_iterator& Iter) const;
+		};
 
 		List(); 
 		~List();
-		List(List & copy_list);
+		List(const List & copy_list);
 		void push_front(T value);
 		void push_back(T value);
 		void pop_front();
@@ -53,8 +66,11 @@ class List
 		void delete_node(node * to_delete);
 		T & operator [] (unsigned int index);
 		const T & operator [] (unsigned int index) const;
+		List<T> & operator = (const List<T> & list_copy);
 		iterator begin() {return List<T>::iterator(this->head);}
 		iterator end() {return List<T>::iterator(nullptr);}
+		const_iterator cbegin() const {return List<T>::const_iterator(this->head);}
+		const_iterator cend() const {return List<T>::const_iterator(nullptr);}
 
 
 	private:

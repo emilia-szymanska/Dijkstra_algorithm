@@ -1,5 +1,5 @@
-lista: src/main.cpp
-	g++ -g -Wall src/main.cpp -o lista
+dijkstra: src/main.cpp
+	g++ -g -Wall src/main.cpp -o dijkstra
 
 #Dijkstra: obj/list.o obj/main.o
 #	g++ -Wall -pedantic -o Dijkstra obj/list.o obj/main.o

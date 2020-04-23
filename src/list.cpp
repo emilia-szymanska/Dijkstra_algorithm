@@ -35,6 +35,51 @@ bool List<T>::iterator::operator !=(const List<T>::iterator & Iter) const
 
 
 
+
+
+
+
+
+template< typename T >
+typename List<T>::const_iterator & List<T>::const_iterator::operator++()
+{
+        this->node_element = this->node_element->forward_pointer;
+        return *this;
+}
+
+template< typename T >
+typename List<T>::const_iterator List<T>::const_iterator::operator++(int)
+{
+ 	List<T>::const_iterator tmp = *this;
+	this->node_element = this->node_element->forward_pointer;
+	return tmp;
+}
+
+template< typename T >
+const T& List<T>::const_iterator::operator*() const
+{
+        return node_element->content;
+}
+
+
+template<typename T>
+typename List<T>::const_iterator& List<T>::const_iterator::operator=(const List<T>::const_iterator& Iter)
+{
+        this->node_element = Iter->node_element;
+        return *this;
+}
+
+
+template< typename T>
+bool List<T>::const_iterator::operator != (const List<T>::const_iterator & Iter) const
+{
+        return this->node_element != Iter.node_element;
+}
+
+
+
+
+
 	
 template <typename T>
 List<T>::List()
@@ -51,17 +96,16 @@ List<T>::~List()
 }
 		
 template <typename T>
-List<T>::List(List & copy_list)
+List<T>::List(const List & copy_list)
 {
 	this->head = nullptr;
 	this->tail = nullptr;
 	this->number_of_elements = 0;
-	for(auto it = copy_list.begin(); it != copy_list.end(); it++)
+	for(auto it = copy_list.cbegin(); it != copy_list.cend(); it++)
 		this->push_back(*it);
-
-
 }
-	
+
+
 template <typename T>
 void List<T>::push_front(T value)
 {
@@ -210,6 +254,17 @@ const T & List<T>::operator [] (unsigned int index) const
 	return tmp_ptr->content;
 }
 
+
+template <typename T>
+List<T> & List<T>::operator = (const List<T> & list_copy)
+{
+	this->head = nullptr;
+	this->tail = nullptr;
+	this->number_of_elements = 0;
+	for(auto it = list_copy.cbegin(); it != list_copy.cend(); it++)
+		this->push_back(*it);
+	return *this;
+}
 
 template <typename T>
 typename List<T>::node * List<T>::return_node(unsigned int index)

@@ -4,71 +4,39 @@
 #include "GraphList.cpp"
 #include "GraphMatrix.cpp"
 #include "../inc/Dijkstra.hh"
+#include <ctime>
+#include <iomanip>
 
 int main()
 {
-	/*Pair<int> para1 = Pair<int>(3, 4);
-	Pair<int> para2 = Pair<int>(3, 3);
-	cout<<(para1>para2)<<endl;
-	GraphList grafik = GraphList(5);
-	grafik.insertEdge(0, 1, 3);
-	grafik.insertEdge(0, 4, 1);
-	grafik.insertEdge(1, 4, 1);
-	grafik.insertEdge(1, 3, 2);
-	grafik.insertEdge(2, 2, 1);
-	grafik.insertEdge(4, 3, 2);
-	cout<<grafik.Size()<<endl;
-	cout<<grafik.areAdjacent(0, 1)<<" "<<grafik.areAdjacent(1, 2)<<" "<<grafik.areAdjacent(3, 4)<<" "<<grafik.areAdjacent(4, 3)<<" "<<endl;
-	List<Pair<int> > meh = grafik.incidentEdges(2);
-	unsigned int rozmiar = meh.size();
-	for(unsigned int i = 0; i < rozmiar; i++) 
-	{
-	//	cout<<meh.front().first<<" "<<meh.front().second<<endl;
-		meh.pop_front();
+	double timing;
 	
-	}
-
-	Heap<int> kopczyk = Heap<int>(5);
-	int a, b, c, d, e;
-	cin>>a>>b>>c>>d>>e;
-	kopczyk.addToHeap(a);
-	kopczyk.addToHeap(b);
-	kopczyk.addToHeap(c);
-	kopczyk.addToHeap(d);
-	kopczyk.addToHeap(e);
-
-	while(!kopczyk.isEmpty())
-	{
-		cout<<kopczyk.seeRoot();
-		kopczyk.takeFromHeap();
-	}*/	
-
-	int n, m, s, a, b, d;
+	int edge, vertex, start, v1, v2, value;
 	
-	cin>>n>>m>>s;
-	GraphList grafik = GraphList(n);
+	cin>>edge>>vertex>>start;
+	//GraphList grafik = GraphList(vertex);
+	GraphMatrix grafik = GraphMatrix(vertex);
 	
-	for(int i = 0; i < m; i++)
+	for(int i = 0; i < edge; i++)
 	{
-		cin>>a>>b>>d;
-		grafik.insertEdge(a-1, b-1, d);
+		cin>>v1>>v2>>value;
+		grafik.insertEdge(v1, v2, value);
 	}
+	
+	clock_t begin = clock();
 
+	Dijkstra_results wynik = dijkstra_algorithm(grafik, start);	
+	
+	clock_t end = clock();
+	
+	timing = (end - begin)/((double)CLOCKS_PER_SEC/1000);
 
+	cout << fixed << setprecision(5) << timing << endl;	
 
-	/*grafik.insertEdge(0, 1, 3);
-	grafik.insertEdge(0, 4, 1);
-	grafik.insertEdge(1, 4, 1);
-	grafik.insertEdge(1, 3, 2);
-	grafik.insertEdge(2, 2, 1);
-	grafik.insertEdge(4, 3, 2);
-	*/
-
-	Dijkstra_results wynik = dijkstra_algorithm(grafik, s-1);	
-	for(unsigned int i = 0; i < n; i++)
+	/*for(int i = 0; i < 5; i++)
 	{
-		cout<<wynik.distance[i]<<" ";
-	}
+		cout<<wynik.distance[i]<<" "<<wynik.previous[i]<<endl;
+	}*/
 
 	return 0;
 }
