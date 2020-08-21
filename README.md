@@ -11,5 +11,8 @@ To run the program after cloning this repository to your computer, run this comm
 Then type the amount of edges, the amount of vertices and the index of the vertex which will be considered in Dijkstra algorithm. The next step is inserting edges by giving for each edge three values: two indices (representing two adjacent vertices) and the value of the edge connecting them.
 To choose a representation of a graph, change lines 15 and 16 in _main.cpp_ file.
 
+## Documentation
+More detailed description of the results of tests and the algorithm is in _PAMSI_projekt_2.pdf_ file. It is written in Polish as it is an assignment for a course at my university.
+
 ## Author
 * **Emilia Szymańska**
